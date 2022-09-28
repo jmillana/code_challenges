@@ -19,9 +19,17 @@
  */
 """
 def is_anagram(word1: str, word2: str) -> bool:
-    ...
+    if word1.lower() == word2.lower():
+        return False
+    return sorted(word1.lower()) == sorted(word2.lower())
 
 if __name__ == "__main__":
-    tests = []
+    tests = [
+        ("anagram", "nagaram", True),
+        ("rat", "car", False),
+        ("car", "car", False),
+        ("car", "Arc", True),
+    ]
     for word1, word2, result in tests:
         assert is_anagram(word1, word2) == result
+    print("Tests OK")
